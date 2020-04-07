@@ -1,0 +1,40 @@
+1.面向对象的特征：
+抽象 提取共有性质的属性和行为
+多态 重载和重写
+继承 代码复用
+
+2.final、finally、finalize：
+final 修饰属性、方法、类
+finally 异常处理
+finalize gc
+
+3.int和Integer：
+int 基本数据类型
+Integer 引用类型
+
+4.重载和重写：
+重载 一个类中
+重写 需要有继承关系
+
+5.抽象类和接口：
+抽象类 可以有实现方法
+接口 不能有实现方法（1.8前）
+
+6.反射：
+动态加载类、属性、方法
+例如 spring中的依赖注入，读取配置文件实现动态加载相关类文件
+
+7.jdbc：
+加载驱动-》获得连接-》获得statement-》使用statement执行sql查询-》resultSet接受返回数据-》关闭连接
+
+8.equals和==：
+equals Object类方法，可重写，实现自定义的比较逻辑
+== 比较内存地址是否相同
+
+9.ArrayList和LinkedList：
+ArrayList 基于数组 查询快 增删改慢
+LinkedList 基于链表 查询慢 增删改快
+
+10.HashMap和HashTable：
+HashMap 非线程安全
+HashTable 线程安全 使用synchronized修饰方法 降低性能
