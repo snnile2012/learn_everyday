@@ -1,0 +1,45 @@
+1.hashMap和concurrentHashMap：
+hashMap 非线程安全
+concurrentHashMap 分段锁
+
+2.ThreadLocal：
+map映射 key为线程名 value也是一个map，其中的key和value分别是变量和变量值
+
+3.创建线程：
+继承Thread
+实现Runnable
+实现Callable（带返回值）
+线程池（Executor）
+
+4.sleep、yeild、join：
+sleep 当前线程睡眠 不限优先级别
+yeild 大于等于当前线程优先级别
+join 等待join线程执行完毕
+
+5.创建线程池的方式：
+cached 可缓存的线程池
+fixed 指定大小
+scheduled 按定时周期执行
+single 单个线程
+
+6.线程的生命周期：
+新建 new
+就绪 start
+执行
+阻塞 线程控制 join、sleep、wait
+销毁 执行完毕或者发生异常
+
+7.volatile：
+不保证原子性，保证可见性和有序性
+可见性 强制刷新主内存数据到工作内存
+有序性 lock指令防止重排序
+
+8.synchronized：
+修饰符 保证代码块或方法原子性 使用monitor机制，获取锁时底层产生monitorEnter指令，释放锁时产生monitorExit指令
+
+9.lock：
+需要手动释放、可设置是否无限等待、可获取锁状态
+
+10.CAS：
+乐观锁 预期值A、内存值B、新值C，当且仅当A=B时，才会写C
+aba问题 内存值最终没变，但过程中被修改成过其他值 可以使用版本号机制解决 每次操作version+1
