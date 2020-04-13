@@ -1,0 +1,38 @@
+1.linux常用命令：
+ls、pwd、top、free、df、cat、grep、find、less、more、tar
+
+2.tomcat调优：
+tomcat自身调优 动静分离 nginx+tomcat 配置线程池大小 运行模式apr从操作系统级别解决异步io问题
+jvm调优 设置catalila文件 调整堆大小 最小化垃圾收集时间 在特定的时间段内最大化处理请求
+
+3.mybatis架构：
+基础支持层 数据源 事务管理 日志
+核心处理层 配置解析、映射 sql解析
+接口层 java api
+
+4.mybatis流程：
+读取全局配置文件 创建sqlSessionFactory工厂 创建sqlSession会话 执行查询操作
+
+5.mybatis松耦合：
+通过可配置化的xml实现解耦
+
+6.get和post：
+get 参数会连接在url路径后 不安全 有大小限制
+post 参数不会跟在url路径后 安全 无大小限制
+
+7.session和cookie：
+session 存在服务端 
+cookie 存在客户端
+
+8.mvc设计思想：
+model负责数据的封装
+view负责数据渲染展示
+controller负责请求分发
+
+9.tcp三次握手、四次挥手
+三次握手 A发送syn包给B B发送syn+ack包给A A发送ack包给B
+四次挥手 A发送fin给B B发送ack给A B发送fin给A A发送ack给B
+
+10.前后端分离是如何做的：
+前端负责请求后端接口及接受数据后的渲染展示
+后端负责对前端请求进行逻辑处理并返回数据
