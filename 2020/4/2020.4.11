@@ -1,0 +1,60 @@
+1.如何理解rpc框架和其实现原理：
+远程服务调用 机器A某个进程可以通过网络协议调用机器B上的进程方法 可以通过http协议和tcp协议
+过程 
+client端发出调用请求 
+client stub作为中转站 进行请求接口，方法，参数以及服务地址，请求id的封装 包装requestMessage对象 序列化 编码 传输到网络
+server端经过网络接收requestMessage
+server stub对字节流进行反序列化 解析requestMessage 最后将请求转发给server
+server调用服务，返回结果给server stub
+server stub将返回结果 状态码 请求id封装成responseMessage 序列化、编码、传输
+client stub得到字节流 进行反序列化 解析成responseMessage 解码 最后将结果返回给client
+client得到最终结果
+如何封装请求 接口名称、方法名称、参数、超时时间、请求id这些都是关键因素
+
+2.springCloud的实现原理：
+eureka 各个服务启动时 eureka client都会将服务注册到eureka server，并且eureka client还会反过来从eureka server拉取注册表，从而知道其他服务在哪
+ribbon 服务间发起请求的时候 基于ribbon作负载均衡 从一个服务的多台机器中选择一台
+feign 基于feign的动态代理 根据注解和选择的机器 拼接url地址发起请求
+zuul 如果前端、移动端调用后端，统一从zuul网关进入，由zuul网关转发给对应的服务
+hystrix 熔断器，通过线程池和熔断开关实现
+
+3.如何理解restful：
+post 新建
+put 更新
+delete 删除
+get 查询
+
+4.如何理解restful的幂等性：
+指对同一个资源进行一次或多次操作都是结果一致的
+幂等操作有：get put delete
+非幂等操作有：post、patch
+
+5.保证接口的幂等性：
+全局唯一id
+防重表
+唯一主键
+乐观锁机制
+
+6.hystrix原理：
+线程隔离，熔断
+
+7.服务雪崩：
+某一服务出现异常 拖垮整个服务链路 造成服务不可用 资源耗尽
+使用hystrix熔断器机制
+
+8.eureka自我保护机制：
+该保护机制的目的是避免在网络连接发生故障时 微服务和注册中心之间无法正常通信 但服务本身是健康的 不应该注销该服务
+所以 eureka在短时间内丢失过多的客户端心跳时 会进入自我保护模式 不会注销任何微服务 增加了健壮性
+
+9.cap、base：
+c 一致性
+a 可用性
+p 分区容错性
+
+ba 基本可用
+s 软状态
+e 最终一致性
+
+10.如何应对微服务链式调用异常：
+使用消息队列进行业务解耦
+hystrix熔断
